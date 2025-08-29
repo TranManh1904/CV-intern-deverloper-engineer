@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tran Duc Manh - CV</title>
+    <!-- Thêm thư viện html2pdf -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .cv-container {
+            max-width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            display: flex;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            width: 35%;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            width: 65%;
+            padding: 30px 35px;
+            background: white;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            /* SỬA Ở ĐÂY: Thay đổi object-fit để không bị ép ảnh */
+            object-fit: contain;
+            object-position: cover;
+            background-color: white; /* Thêm nền trắng nếu ảnh không fill hết */
+        }
+        .name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+        .title {
+            font-size: 16px;
+            color: #ecf0f1;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 13px;
+        }
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            display: inline-block;
+        }
+        .section {
+            margin-bottom: 35px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        .sidebar .section-title {
+            color: #ecf0f1;
+            border-bottom: 2px solid #3498db;
+            font-size: 16px;
+        }
+        .skill-category {
+            margin-bottom: 20px;
+        }
+        .skill-category h4 {
+            font-size: 14px;
+            color: #3498db;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .skill-list {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .experience-item, .project-item {
+            margin-bottom: 25px;
+        }
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+        .company {
+            font-size: 14px;
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .date {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+        .description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .description li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 15px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .description li:before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        .summary {
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: justify;
+            color: #555;
+        }
+        .education {
+            margin-bottom: 15px;
+        }
+        .degree {
+            font-size: 14px;
+            font-weight: 600;
+            color: #ecf0f1;
+            margin-bottom: 4px;
+        }
+        .university {
+            font-size: 13px;
+            color: #3498db;
+            margin-bottom: 4px;
+        }
+        .project-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        .project-tech {
+            font-size: 12px;
+            color: #3498db;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        .other-exp {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #555;
+        }
+        .career-goal {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #ecf0f1;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(52, 152, 219, 0.2);
+            border-radius: 5px;
+        }
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        @media print {
+            .cv-container {
+                box-shadow: none;
+                max-width: none;
+                width: 100%;
+            }
+            body {
+                font-size: 12px;
+                background: white;
+                padding: 0;
+            }
+            .avatar {
+                border: 2px solid #3498db;
+            }
+            .download-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="generatePDF()">Download PDF</button>
+
+    <div class="cv-container" id="cv-content">
+        <div class="sidebar">
+            <div class="header">
+                <div class="avatar-container">
+                    <!-- ẢNH ĐẠI DIỆN ĐÃ ĐƯỢC CẬP NHẬT -->
+                    <img src="manhcv.jpg" alt="Tran Duc Manh" class="avatar">
+                </div>
+                <h1 class="name">TRAN DUC MANH</h1>
+                <p class="title">Flutter Developer</p>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <span>0923 xxx xxx</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <span>tranducmanh6303@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">🌐</span>
+                    <span>github.com/TranManh1904</span>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <span>Da Nang, Vietnam</span>
+                </div>
+            </div>
+            <div class="section">
+                <h3 class="section-title">CAREER GOAL</h3>
+                <div class="career-goal">
+                    Currently a Flutter Intern, aiming to enhance programming skills and develop programming thinking to become a professional Fullstack Developer with ReactJS and VueJS in the future.
+                </div>
+            </div>
+            <div class="section">
+                <h3 class="section-title">TECHNICAL SKILLS</h3>
+                <div class="skill-category">
+                    <h4>Languages</h4>
+                    <div class="skill-list">JavaScript (ES6+), Dart, HTML5, CSS3, C/C++</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Frameworks & Platforms</h4>
+                    <div class="skill-list">Flutter, ReactJS, Android, VueJS (learning), NodeJS (basic)</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Databases</h4>
+                    <div class="skill-list">MySQL, Firebase, MongoDB, PHP</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Tools</h4>
+                    <div class="skill-list">Git, Postman, Figma, VS Code</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Hardware & IoT</h4>
+                    <div class="skill-list">Camera AI systems, Network configuration, Server setup, Smart devices</div>
+                </div>
+            </div>
+            <div class="section">
+                <h3 class="section-title">EDUCATION</h3>
+                <div class="education">
+                    <div class="degree">Information Technology Engineer</div>
+                    <div class="university">University of Economics - Technical Industries (UNETI), Hanoi</div>
+                    <div class="date">2021 – 2025</div>
+                    <div class="skill-list">Major: Computer Engineering</div>
+                    <div class="skill-list">GPA: 7/10</div>
+                </div>
+            </div>
+            <div class="section">
+                <h3 class="section-title">LANGUAGES</h3>
+                <div class="skill-category">
+                    <div class="skill-list">
+                        <strong>Vietnamese:</strong> Native<br>
+                        <strong>English:</strong> B1 Level - Can use in work environment
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="section">
+                <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+                <div class="summary">
+                    I am Tran Duc Manh - a Flutter developer with internship and fresher experience at Wesmart. I graduated in Information Technology from the University of Economics - Technical Industries Hanoi. I have a passion for mobile application development and aim to become a Fullstack Developer in the future. I also have experience in IoT hardware projects, including AI camera systems, network configuration, and server setup for high-rise building projects.
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">WORK EXPERIENCE</h2>
+                <div class="experience-item">
+                    <div class="job-title">Flutter Developer (Intern/Fresher)</div>
+                    <div class="company">Wesmart, Hanoi</div>
+                    <div class="date">January 2024 – June 2025</div>
+                    <div class="description">
+                        <ul>
+                            <li>Developed and maintained mobile applications using Flutter framework</li>
+                            <li>Designed responsive UI components from Figma specifications</li>
+                            <li>Implemented state management patterns (Bloc, Provider)</li>
+                            <li>Integrated Firebase services and deployed applications to production</li>
+                            <li>Conducted testing and debugging processes before product delivery</li>
+                            <li>Installed camera equipment for PVP high-rise buildings</li>
+                            <li>Set up network infrastructure for smart building solutions</li>
+                            <li>Configured servers for data storage and processing</li>
+                            <li>Conducted testing and quality assurance for hardware systems</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">KEY PROJECTS</h2>
+                <div class="project-item">
+                    <div class="project-title">Store + Blogger Management Application</div>
+                    <div class="project-tech">Flutter + Firebase</div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Description:</strong> Music instrument store management application (guitars, pianos) combined with personal blog for self-introduction and product showcasing</li>
+                            <li><strong>Features:</strong> Product management, order processing, personal blog, revenue analytics dashboard</li>
+                            <li><strong>Technologies:</strong> Flutter Web, Firebase Authentication, Cloud Firestore</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/shop_instrucment_flutter</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Music Streaming Application</div>
+                    <div class="project-tech">Flutter</div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Description:</strong> Online music streaming application with ZingMP3-like interface</li>
+                            <li><strong>Features:</strong> Online music playback, playlist creation, song search, music library management</li>
+                            <li><strong>Technologies:</strong> Flutter, Audio Service, API integration</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/music_app</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Shoe E-commerce Website</div>
+                    <div class="project-tech">ReactJS + NodeJS</div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Description:</strong> E-commerce website for shoes and footwear</li>
+                            <li><strong>Features:</strong> Product display, shopping cart, payment processing, user management</li>
+                            <li><strong>Technologies:</strong> ReactJS, Node.js, Express, MongoDB</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/react_shop_shoe</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">ADDITIONAL EXPERIENCE</h2>
+                <div class="other-exp">
+                    <strong>High School Math Tutor</strong> (Part-time during university)<br>
+                    Provided mathematics tutoring for students in grades 10-12, developed strong communication and teaching skills while helping students achieve academic success. This experience enhanced my ability to explain complex concepts clearly and work effectively with diverse individuals.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generatePDF() {
+            // Lấy nội dung CV
+            const element = document.getElementById('cv-content');
+            
+            // Cấu hình cho file PDF
+            const options = {
+                margin: 10,
+                filename: 'Tran_Duc_Manh_CV.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            
+            // Tạo và tải xuống PDF
+            html2pdf().set(options).from(element).save();
+        }
+    </script>
+</body>
+</html>
