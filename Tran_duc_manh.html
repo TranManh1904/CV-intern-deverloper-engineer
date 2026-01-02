@@ -54,10 +54,10 @@
             height: 120px;
             border-radius: 50%;
             border: 3px solid #3498db;
-            /* SỬA Ở ĐÂY: Thay đổi object-fit để không bị ép ảnh */
-            object-fit: contain;
-            object-position: cover;
-            background-color: white; /* Thêm nền trắng nếu ảnh không fill hết */
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
         }
         .name {
             font-size: 28px;
@@ -243,7 +243,7 @@
                     <img src="manhcv.jpg" alt="Tran Duc Manh" class="avatar">
                 </div>
                 <h1 class="name">TRAN DUC MANH</h1>
-                <p class="title">Flutter Developer</p>
+                <p class="title">Fullstack Engineer</p>
             </div>
             <div class="contact-info">
                 <div class="contact-item">
@@ -266,26 +266,34 @@
             <div class="section">
                 <h3 class="section-title">CAREER GOAL</h3>
                 <div class="career-goal">
-                    Currently a Flutter Intern, aiming to enhance programming skills and develop programming thinking to become a professional Fullstack Developer with ReactJS and VueJS in the future.
+                    Fullstack Engineer focused on data platforms (Warehouse/Mart/Lake), Python/Odoo and PostgreSQL. Own end‑to‑end delivery: secure APIs, scalable services, responsive UIs and CI/CD. Aim to drive measurable product outcomes and mentor junior engineers.
                 </div>
             </div>
             <div class="section">
                 <h3 class="section-title">TECHNICAL SKILLS</h3>
                 <div class="skill-category">
                     <h4>Languages</h4>
-                    <div class="skill-list">JavaScript (ES6+), Dart, HTML5, CSS3, C/C++</div>
+                    <div class="skill-list">Python, SQL (PostgreSQL), JavaScript (ES6+), Dart, HTML5/CSS3</div>
                 </div>
                 <div class="skill-category">
                     <h4>Frameworks & Platforms</h4>
-                    <div class="skill-list">Flutter, ReactJS, Android, VueJS (learning), NodeJS (basic)</div>
+                    <div class="skill-list">Odoo, ReactJS, Flutter, NodeJS (basic)</div>
                 </div>
                 <div class="skill-category">
                     <h4>Databases</h4>
-                    <div class="skill-list">MySQL, Firebase, MongoDB, PHP</div>
+                    <div class="skill-list">PostgreSQL (pgAdmin4), MySQL, Firebase, MongoDB</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Data Engineering</h4>
+                    <div class="skill-list">Data Warehouse, Data Mart, Data Lake, ETL/ELT pipelines</div>
                 </div>
                 <div class="skill-category">
                     <h4>Tools</h4>
-                    <div class="skill-list">Git, Postman, Figma, VS Code</div>
+                    <div class="skill-list">Git, Postman, pgAdmin4, Figma, VS Code</div>
+                </div>
+                <div class="skill-category">
+                    <h4>Integrations & Security</h4>
+                    <div class="skill-list">AI integration, REST APIs, Webhooks, Authentication & Security, Chatwoot, Domain/DNS</div>
                 </div>
                 <div class="skill-category">
                     <h4>Hardware & IoT</h4>
@@ -316,7 +324,7 @@
             <div class="section">
                 <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
                 <div class="summary">
-                    I am Tran Duc Manh - a Flutter developer with internship and fresher experience at Wesmart. I graduated in Information Technology from the University of Economics - Technical Industries Hanoi. I have a passion for mobile application development and aim to become a Fullstack Developer in the future. I also have experience in IoT hardware projects, including AI camera systems, network configuration, and server setup for high-rise building projects.
+                    I’m Tran Duc Manh, a Fullstack Engineer leading end‑to‑end delivery at Lydinc (Da Nang). I design system architecture; build data platforms (Warehouse/Mart/Lake) and ETL/ELT pipelines; develop secure Python/Odoo services and REST APIs with PostgreSQL; craft responsive UIs (React/Flutter); and own deployment, CI/CD and monitoring. I integrate AI and webhooks, manage domain/DNS and Chatwoot, and mentor 2–3 interns through reviews and testing. Previously at Wesmart, I shipped Flutter apps with Firebase. I also teach Robotics, AI and Computational Thinking and support labs at DUT.
                 </div>
             </div>
             <div class="section">
@@ -327,21 +335,60 @@
                     <div class="date">January 2024 – June 2025</div>
                     <div class="description">
                         <ul>
-                            <li>Developed and maintained mobile applications using Flutter framework</li>
-                            <li>Designed responsive UI components from Figma specifications</li>
-                            <li>Implemented state management patterns (Bloc, Provider)</li>
-                            <li>Integrated Firebase services and deployed applications to production</li>
-                            <li>Conducted testing and debugging processes before product delivery</li>
-                            <li>Installed camera equipment for PVP high-rise buildings</li>
-                            <li>Set up network infrastructure for smart building solutions</li>
-                            <li>Configured servers for data storage and processing</li>
-                            <li>Conducted testing and quality assurance for hardware systems</li>
+                            <li>Built and maintained Flutter apps with responsive UI from Figma</li>
+                            <li>Implemented state management (Bloc, Provider)</li>
+                            <li>Integrated Firebase and shipped to production</li>
+                            <li>Conducted testing and debugging before release</li>
+                            <li>Configured network and servers for smart building solutions</li>
+                            <li>Supported AI camera deployments and hardware QA</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Technology Transfer Specialist (Fullstack)</div>
+                    <div class="company">Lydinc, Da Nang</div>
+                    <div class="date">Last 4 months</div>
+                    <div class="description">
+                        <ul>
+                            <li>Owned end‑to‑end delivery: requirements, architecture, implementation</li>
+                            <li>Fullstack development: data, backend APIs, frontend UI, integrations</li>
+                            <li>Operated and deployed products; set up lightweight CI/CD</li>
+                            <li>Built data pipelines: ingestion, processing, secure storage</li>
+                            <li>Taught Robotics, AI and Computational Thinking (short courses)</li>
+                            <li>Managed 2–3 interns: task planning, mentoring, quality reviews</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="experience-item">
+                    <div class="job-title">Teaching Assistant</div>
+                    <div class="company">University of Science and Technology – The University of Danang (DUT)</div>
+                    <div class="date">Part-time</div>
+                    <div class="description">
+                        <ul>
+                            <li>Assisted lectures and labs in Robotics/AI/programming</li>
+                            <li>Guided student projects and graded assignments</li>
+                            <li>Organized workshops and supported course materials</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="section">
-                <h2 class="section-title">KEY PROJECTS</h2>
+                <h2 class="section-title">SELECTED PROJECTS</h2>
+                <div class="other-exp" style="margin-bottom:12px;">
+                    Public demos linked below; company projects summarized under Work Experience. Detailed case studies/code samples available upon request.
+                </div>
+                <div class="project-item">
+                    <div class="project-title">Omnichannel Support: Chatwoot + Zalo OA + Odoo CRM + AI Chatbot</div>
+                    <div class="project-tech">Python (Odoo/Flask) + PostgreSQL + React + Chatwoot + Zalo OA + Cohere</div>
+                    <div class="description">
+                        <ul>
+                            <li><strong>Description:</strong> Multichannel customer support platform integrating Chatwoot, Zalo OA and Odoo CRM with AI chatbot (3 logic flows)</li>
+                            <li><strong>Features:</strong> Chatwoot–Odoo bridge, Zalo OA integration, AI L1/L2/L3 responses, Odoo live chat UI, analytics dashboard, idempotent processing</li>
+                            <li><strong>Technologies:</strong> Odoo 17, Flask, PostgreSQL, React (CDN), Tailwind, Cohere API, Docker Compose, Cloudflare Tunnel</li>
+                            <li><strong>Link:</strong> Private repository; demo/case study available upon request</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="project-item">
                     <div class="project-title">Store + Blogger Management Application</div>
                     <div class="project-tech">Flutter + Firebase</div>
@@ -350,7 +397,7 @@
                             <li><strong>Description:</strong> Music instrument store management application (guitars, pianos) combined with personal blog for self-introduction and product showcasing</li>
                             <li><strong>Features:</strong> Product management, order processing, personal blog, revenue analytics dashboard</li>
                             <li><strong>Technologies:</strong> Flutter Web, Firebase Authentication, Cloud Firestore</li>
-                            <li><strong>Link:</strong> github.com/TranManh1904/shop_instrucment_flutter</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/</li>
                         </ul>
                     </div>
                 </div>
@@ -362,7 +409,7 @@
                             <li><strong>Description:</strong> Online music streaming application with ZingMP3-like interface</li>
                             <li><strong>Features:</strong> Online music playback, playlist creation, song search, music library management</li>
                             <li><strong>Technologies:</strong> Flutter, Audio Service, API integration</li>
-                            <li><strong>Link:</strong> github.com/TranManh1904/music_app</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/</li>
                         </ul>
                     </div>
                 </div>
@@ -374,7 +421,7 @@
                             <li><strong>Description:</strong> E-commerce website for shoes and footwear</li>
                             <li><strong>Features:</strong> Product display, shopping cart, payment processing, user management</li>
                             <li><strong>Technologies:</strong> ReactJS, Node.js, Express, MongoDB</li>
-                            <li><strong>Link:</strong> github.com/TranManh1904/react_shop_shoe</li>
+                            <li><strong>Link:</strong> github.com/TranManh1904/</li>
                         </ul>
                     </div>
                 </div>
@@ -384,6 +431,14 @@
                 <div class="other-exp">
                     <strong>High School Math Tutor</strong> (Part-time during university)<br>
                     Provided mathematics tutoring for students in grades 10-12, developed strong communication and teaching skills while helping students achieve academic success. This experience enhanced my ability to explain complex concepts clearly and work effectively with diverse individuals.
+                </div>
+            </div>
+            <div class="section">
+                <h2 class="section-title">ACHIEVEMENTS</h2>
+                <div class="description">
+                    <ul>
+                        <li>Mentored a team from Dong Ha High School to win First Prize in Robotics at Digital Technology Day 2025 – TDF Annual Tech Camp (organized with The Dariu Foundation)</li>
+                    </ul>
                 </div>
             </div>
         </div>
